@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaflet-Basic-Map</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/> 
+
+    <!-- d3 JavaScript -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+
+ <!-- Our CSS -->
+ <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+<!-- The div that holds our map -->
+<div id="mapid"></div>   
+
+<div id="sidebar" class="leaflet-sidebar collapsed">
+    <!-- Nav tabs -->
+    <div class="leaflet-sidebar-tabs">
+      <ul role="tablist">
+        <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+        <li class="disabled"><a href="#profile" id="toggledraw" role="tab"><i class="fa fa-pen"></i></a></li>
+      </ul>
+    </div>
+  
+    <!-- Tab panes -->
+    <div class="leaflet-sidebar-content">
+      <div class="leaflet-sidebar-pane" id="home">
+        <h1 class="leaflet-sidebar-header">
+          Layers
+          <span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span>
+        </h1>
+        <span id="layercontrol"></span>
+        <div id="latlng"></div>
+  
+      </div>
+  
+      <div class="leaflet-sidebar-pane" id="profile">
+        <h1 class="leaflet-sidebar-header">Profile<span class="leaflet-sidebar-close"><i class="fa fa-caret-right"></i></span></h1>
+      </div>
+    </div>
+  </div>
+  
+  <div id="map"></div>
+
+<!-- Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+crossorigin=""></script> 
+<!-- API key -->
+<script type="text/javascript" src="static/js/config.js"></script>
+<!-- Our JavaScript -->
+<script type="text/javascript" src="static/js/cities.js"></script>
+<script type="text/javascript" src="static/js/logic.js"></script>
+</body>
+</html>
