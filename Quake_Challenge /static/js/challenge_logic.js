@@ -15,6 +15,13 @@ let satelliteStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/sate
 	accessToken: API_KEY
 });
 
+// We create the second tile layer that will be the background of our map.
+let darkStreets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
+	maxZoom: 18,
+	accessToken: API_KEY
+});
+
 // Create the map object with center, zoom level and default layer.
 let map = L.map('mapid', {
 	center: [40.7, -94.5],
@@ -25,7 +32,8 @@ let map = L.map('mapid', {
 // Create a base layer that holds all three maps.
 let baseMaps = {
   "Streets": streets,
-  "Satellite": satelliteStreets
+  "Satellite": satelliteStreets,
+  "Dark": darkStreets
 };
 
 // 1. Add a 3rd layer group for the major earthquake data.
@@ -130,10 +138,10 @@ function styleInfo(feature) {
 
 function getColor(magnitude) {
     if (magnitude > 6) {
-      return "#ea2c2c";
+      return "#9932CC";
     }
     if (magnitude > 5) {
-      return "#ea822c";
+      return "#008B8B";
     }    
     return "#eecc00";
   }
@@ -176,14 +184,11 @@ let legend = L.control({
 legend.onAdd = function() {
   let div = L.DomUtil.create("div", "info legend");
 
-  const magnitudes = [0, 1, 2, 3, 4, 5];
+  const magnitudes = [0, 5, 6];
   const colors = [
-    "#98ee00",
-    "#d4ee00",
     "#eecc00",
-    "#ee9c00",
-    "#ea822c",
-    "#ea2c2c"
+    "#008B8B",
+    "#9932CC",
   ];
 
 // Looping through our intervals to generate a label with a colored square for each interval.
@@ -205,8 +210,8 @@ legend.onAdd = function() {
   // Create a style for the lines.
 
   L.geoJSON(data,{
-    color: "#ffffa1",
-    weight: 2
+    color: "#F7455D",
+    weight: 1
      
   })
   
